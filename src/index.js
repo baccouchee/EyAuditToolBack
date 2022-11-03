@@ -1,9 +1,16 @@
 const express = require("express");
 require("./db/mongoose");
 const userRouter = require("./routers/user");
+const clientRouter = require("./routers/client");
+const projectRouter = require("./routers/project");
+const workprogramRouter = require("./routers/workprogram");
+const subStreamRouter = require("./routers/subStream");
+const riskRouter = require("./routers/risk");
+const controlRouter = require("./routers/control");
+const cors = require("cors");
 
 const app = express();
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3000;
 
 // app.use((req, res, next) => {
 //     if (req.method === 'GET') {
@@ -18,7 +25,14 @@ const port = process.env.PORT || 3001;
 // })
 
 app.use(express.json());
+app.use(cors());
 app.use(userRouter);
+app.use(clientRouter);
+app.use(projectRouter);
+app.use(workprogramRouter);
+app.use(subStreamRouter);
+app.use(riskRouter);
+app.use(controlRouter);
 
 app.listen(port, () => {
   console.log("Server is up on port " + port);
