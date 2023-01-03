@@ -189,4 +189,11 @@ router.get("/workprograms/priority/charts", async (req, res) => {
   res.send(workprogram);
 });
 
+router.get("/workprogram/documents", async (req, res) => {
+  var number = WorkProgram.count({}, function (err, count) {
+    console.log(count);
+    res.send({ documents: count }); // this will print the count to console
+  });
+});
+
 module.exports = router;

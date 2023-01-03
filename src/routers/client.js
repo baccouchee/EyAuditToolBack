@@ -53,6 +53,13 @@ router.patch("/clients/:id", async (req, res) => {
   }
 });
 
+router.get("/clients/documents", async (req, res) => {
+  var number = Client.count({}, function (err, count) {
+    console.log(count);
+    res.send({ documents: count }); // this will print the count to console
+  });
+});
+
 router.get("/clients/all", async (req, res) => {
   const client = await Client.find();
   res.send(client);

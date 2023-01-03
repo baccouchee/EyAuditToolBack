@@ -30,7 +30,12 @@ router.get("/projects/all", async (req, res) => {
   res.send(project);
 });
 
-
+router.get("/projects/documents", async (req, res) => {
+  var number = Project.count({}, function (err, count) {
+    console.log(count);
+    res.send({ documents: count }); // this will print the count to console
+  });
+});
 
 router.get("/projects/month", async (req, res) => {
   const project = await Project.aggregate([
