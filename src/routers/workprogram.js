@@ -64,11 +64,10 @@ router.post("/workprogram/:project", async (req, res) => {
   }
 });
 
-// router.get("/workprograms/all", async (req, res) => {
-//   const workprogram = await WorkProgram.find().populate("client");
-
-//   res.send(workprogram);
-// });
+router.get("/workprograms/all", async (req, res) => {
+  const workprogram = await WorkProgram.find();
+  res.send(workprogram);
+});
 
 router.get("/workprogram/edit/:id", async (req, res) => {
   const workprogram = await WorkProgram.findOne({
